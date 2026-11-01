@@ -1,0 +1,53 @@
+TRANSCRIPTION DES VIDÉOS — ASSISTANT DE PROSPECTION B2B
+
+Source : transcriptions automatiques Loom. Texte conservé tel que transcrit ; certains noms propres et termes techniques peuvent être mal reconnus. Les horodatages recommencent à zéro pour chaque partie.
+
+PARTIE 1 — Présentation du workflow
+https://www.loom.com/share/91980c9c73a3445c8f6fd217339e200e
+
+0:03 Bonjour, du coup j'ai présenté mon workflow, du coup en gros j'avais un entretien à passer le mardi avec une entreprise qui s'appelle Thunderstrike et je me suis dit que j'allais profiter de cette occasion pour faire mon projet dessus.
+
+0:24 Du coup l'objectif c'était de construire un workflow de prospection téléphonique pour Thunderstrike, une start-up qui propose une solution d'intelligence artificielle aux entreprises du BTP.
+
+0:40 Donc l'objectif est simple, c'est que chaque matin le commercial reçoit un email avec les prospects appelés. l'ordre de priorité ainsi que des suggestions pour préparer ces conversations.
+
+0:55 Donc voilà, le point de départ c'est ce tableau contenant donc 12 entreprises fictives.
+
+1:08 Pour chaque prospect on retrouve l'entreprise, le contact, sa fonction et un téléphone fictif, un numéro de téléphone fictif et la date du prochain appel, le statut commercial et les notes des échanges précédents.
+
+1:28 Donc le workflow quotidien il lit ces données sans jamais les modifier, après un appel c'est le commercial qui est censé avoir Le workflow possède deux déclencheurs, un déclencheur manuel pour les tests et un déclencheur automatique du lundi au vendredi à 9h dans le fuseau horaire Paris.
+
+1:58 Donc, il commande, Il commence par lire le Google Sheet. Il conserve les prospects dont la date d'appel est aujourd'hui ou bien dépassée, en excluant les prospects clôturés et les dates invalides.
+
+2:17 Ensuite, il trie les appels par date croissante. Les plus anciens passent en premier. ensuite une connexion La condition distingue deux situations, s'il y a des appels on prépare le récapitulatif, sinon on envoie simplement aucun appel prévu aujourd'hui sur la boîte mail.
+
+2:41 Donc pour les prospects retenus, on a Gemini, Flashlight, La test qui propose une accroche téléphonique et une question de découverte.
+
+2:56 Ces suggestions sont ajoutées aux informations du prospect, puis regroupées dans un tableau envoyé par mail, que je vais vous montrer plus tard.
+
+3:08 Le workflow fonctionne sans nœud HTTP request, ni nœud de code. Pour guider l'IA, j'ai utilisé un prompt structuré en XML, inspiré du prompt que nous a conseillé le professeur.
+
+3:33 Il définit donc le rôle de l'assistant, son objectif, le contexte. des exemples et le format de réponses, donc une accroche et une question.
+
+3:43 Jiminy reçoit uniquement l'entreprise, la fonction et les notes, le prompt qui lui interdit d'inventer des informations, notamment sur Tender Strike ou sur les échanges précédents.
+
+3:55 Donc là je vais vous montrer un test. Donc, Voilà le premier test, ça donne ça, donc ici on a l'entreprise, nom de jeu contact, fonction, téléphone effectif, date de prochain appel, etc.
+
+4:09 Et une préparation faite par Gmini, il me reste que 45 secondes donc je vais aller un peu vite, hop là, ensuite le deuxième test quand il n'y aucun appel, ça envoie ce Ensuite, pour construire ce projet, j'ai travaillé avec Codext et n8n-cli.
+
+4:43 La commande push a servi à envoyer des workflows locaux vers N8M. Et à l'inverse, Pool a permis de récupérer les dernières versions depuis N8n.
+
+4:57 Validate a servi à vérifier leur structure et leurs paramètres, et
+
+PARTIE 2 — Suite : commandes et méthodes de travail
+https://www.loom.com/share/86a15a645f7147d998b1b7aa05149f51
+
+0:00 Partie 2, parce que j'avais que 5 minutes sur l'homme. Donc je disais, EXEC, ça permet de lancer des tests réels, tandis que TEST a servi au scénario, avec des données simulées.
+
+0:15 Et enfin, PUBLISH a activé le workflow pour son déclencheur automatique. Donc, certaines opérations, ils ont également utilisé EXEC. J utilisé directement la connexion MCP pour les options qui n'étaient pas prises en charge par cette version de la CLI.
+
+0:39 J'ai aussi utilisé trois méthodes de travail. L'interview pour cadrer le besoin, Doped, Drive-In dev pour vérifier les hypothèses pendant la construction et aussi le review pour rechercher et corriger les erreurs avant la livraison.
+
+0:59 Donc le résultat c'est un assistant qui prépare la prospection quotidienne tout en laissant au commercial la mise à jour des données et la validation des suggestions de l'IA.
+
+1:12 Merci.
